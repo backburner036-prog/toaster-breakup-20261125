@@ -28,6 +28,9 @@ def save_line(path, text):
 def main():
     check_len(TEXT)
     save_line(OUT, TEXT)
+    saved = OUT.read_text(encoding="utf-8")
+    assert saved == TEXT, "round-trip mismatch"
+    print(f"wrote {len(TEXT)} chars to {OUT}")
 
 
 if __name__ == "__main__":
